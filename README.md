@@ -23,8 +23,8 @@ Este é um projeto de gerenciador de tarefas simples, desenvolvido com **HTML, C
 ## Responsividade
 
 A aplicação foi desenvolvida com foco em usabilidade para diferentes tamanhos de tela. Em telas menores, os botões de ação são exibidos automaticamente para facilitar a navegação em dispositivos móveis, mesmo com a rotação da tela.
-
-Autor
+ 
+## Autor
 
 Desenvolvido por Luis Fernando
 Ciência da computaçãp | UERJ
