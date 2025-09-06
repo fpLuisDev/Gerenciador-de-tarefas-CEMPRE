@@ -1,0 +1,531 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;          
+  flex-direction: column; 
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 50px 24px;
+  box-sizing: border-box;
+  background-color: #f0f2f5;
+}
+
+header {
+    display: flex;
+    margin-bottom: 40px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2.3px;
+}
+
+header h1 {font-size: 4.0rem;color: #0011ff;margin: 0;}
+header h2 {font-size: 2.5rem;opacity: 60%;margin: 0;}
+
+/* Painel de contadores*/
+.container-status {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
+    max-width: 1350px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.field {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 12px; 
+    padding: 24px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.23);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 25px;
+}
+
+.field:hover{
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.43);
+    
+}
+
+.field-circle {
+    width: 55px;
+    height:55px;
+    border-radius: 50%;
+    background-color: #0011ff;
+    box-shadow: 0px 4px 8px rgba(0.25, 0.25, 0.40, 0.40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.field-circle i{
+    font-size: 1.8rem;
+    color: white;
+}
+
+.field-content { display: flex; flex-direction: column; }
+.field-content p, h3 { margin: 0; }
+.field-content p { margin-bottom: 13px; opacity: 60%; }
+.field-content h3 { font-size: 1.6rem; color: #333; }
+
+/*Design do container ''nova tarefa''*/
+.container-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    max-width: 1300px;
+    margin-top: 6rem;
+    padding: 50px 30px;
+    background-color: #c6c9ff; 
+    border: 1px solid #c6c9ff;
+    border-radius: 19px; 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.23);
+}
+
+.content-form{
+    display: grid;
+    align-content: start;
+    gap: 0;
+}
+.content-form h1{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.content-form span{
+    font-size: 1.6rem;
+    color: #333;
+    margin: 0;
+}
+
+.container-form input[type="submit"] {
+    margin-top: 1.7rem;
+    width: 210px;
+    height: 60px;
+    border: none;
+    border-radius: 13px;
+    background-color: #0011ff;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.43);
+}
+
+.container-form input[type="submit"]:hover {
+    background-color: #0000cc;
+}
+.content-icon{
+    display: flex;
+    justify-content: right;
+
+    align-items: center;
+    color: white;
+    margin-right: 3rem;
+}
+.content-icon i{
+    color: #0011ff;
+    font-size: 7.5rem;
+    margin: 0;
+    }
+
+/*Formulário de nova tarefa*/    
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    font-family: poppins, sans-serif;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: #999999 1px solid;
+    padding-bottom: 1rem;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-button {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+.close-button:hover {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #0011ff;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0000cc;
+}
+
+.hidden {
+    display: none;
+}
+
+/*Colunas - A FAZER | FAZENDO | CONCLÚIDO*/
+.tasks-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    width: 100%;                           
+    max-width: 1100px;                     
+}
+
+.task-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    border-bottom:  #999999 1px solid;
+}
+
+.column-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    margin-right: 0.75rem;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+.task-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 0.6rem;
+}
+
+.count-todo { background-color: #000000; }
+.count-doing { background-color: #ffa500; }
+.count-done { background-color: #28a745; }
+
+.column-divider {
+    border: 0;
+    height: 2px;
+    background-color: #f0f0f0;
+    margin-bottom: 1.5rem;
+}
+
+.column-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 200px;
+}
+
+/* Cartões de tarefas */
+.task-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.task-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+.task-card:hover .task-footer {
+    display: grid;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.task-header h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    word-break: break-all;
+    white-space: normal !important; 
+}
+
+.edit-task-title-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-all;
+    white-space: normal !important; 
+    overflow: hidden;
+}
+
+.task-header .copy-icon {
+    color: #adb5bd;
+    font-size: 1rem;
+    
+}
+
+.task-description {
+    font-size: 0.85rem;
+    color: #6c757d;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    overflow-wrap: break-word !important;
+    word-break: break-all;
+    white-space: normal !important; 
+}
+
+.edit-task-description-details {
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.5;
+    margin-top: 1rem;
+    overflow-wrap: break-word !important;
+    word-break: break-all;
+    white-space: normal !important; 
+}
+
+.task-footer {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    transition: display 0.2s ease-in-out;
+    
+}
+
+.task-footer button {
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    color: black;
+    font-size: 0.75rem;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.task-footer button:hover {
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.doing-button-card:hover { background-color: #ffa500;color:white; }
+.done-button-card:hover { background-color: #28a745;color:white; }
+.delete-button-card:hover { background-color: #c82333;color:white; }
+.edit-button-card:hover { background-color: #0011ff;color:white; }
+
+
+@media (max-width: 1024px){
+
+    body {
+        padding: 40px 20px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    .container-status {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .container-form {
+
+        gap: 2rem;
+        text-align: center;
+        width: 100%;
+        margin-top: 4rem;
+        padding: 40px 25px;
+    }
+    
+    .content-form {
+        align-items: center; 
+    }
+
+    .container-form input[type="submit"] {
+        width: 100%;
+        max-width: 250px;
+        margin-left: 5.1rem;
+    }
+
+    .content-icon {
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .content-icon i {
+        font-size: 6rem;
+    }
+    
+    .modal-content {
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .tasks-board {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 100%;
+        gap: 2.5rem;
+    }
+
+    .task-footer{
+        gap: 0.5rem;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .delete-button-card { background-color: #c82333 !important;color: white !important;;}
+}
+
+@media (max-width: 768px) {
+     
+    body {
+        padding: 40px 20px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    .container-status {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+
+    .container-form {
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+        text-align: center;
+        width: 100%;
+        margin-top: 4rem;
+        padding: 40px 25px;
+    }
+    
+    .content-form {
+        align-items: center; 
+    }
+
+    .container-form input[type="submit"] {
+        width: 100%;
+        max-width: 250px;
+        margin-left: 2.1rem;
+    }
+
+    .content-icon {
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .content-icon i {
+        font-size: 6rem;
+    }
+    
+    .tasks-board {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        gap: 2.5rem;
+    }
+
+    .task-footer{
+        gap: 0.5rem;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    .delete-button-card { background-color: #c82333 !important;color: white !important;;}
+
+}
+
+
